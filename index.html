@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Álbum de fotos · Encuentro Nacional de Agencias Públicas</title>
+<meta name="description" content="Álbum fotográfico del Encuentro Nacional de Agencias Públicas para la Investigación y Persecución de la Criminalidad Económica (Rosario, 5 y 6 de noviembre de 2026). Descarga de fotos individual y en ZIP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============ Colores institucionales (editar acá) ============ */
+  :root{
+    --navy-900:#0B1030;
+    --navy-700:#1B2A5E;
+    --amber:#F0A24A;
+    --crimson:#C0203F;
+    --magenta:#A8348F;
+    --gold:#FFC857;
+    --coral:#E8604C;
+    --peri:#7F8FF5;
+    --ink:#0B1030;
+    --paper:#F4F5FB;
+    --white:#fff;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+
+  /* ============ Cabecera ============ */
+  header.hero{position:relative;overflow:hidden;color:var(--white);background:
+    radial-gradient(1200px 500px at 85% -10%,rgba(127,143,245,.25),transparent 60%),
+    linear-gradient(160deg,var(--navy-900) 0%,var(--navy-700) 100%);
+    padding:56px 0 120px}
+  .hero::before,.hero::after{content:"";position:absolute;pointer-events:none}
+  .hero::before{inset:auto -8% -140px auto;width:520px;height:520px;transform:rotate(45deg);
+    background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,0));border-radius:24px}
+  /* rombos de color, como en la portada del programa */
+  .diamonds{position:absolute;right:-60px;bottom:-60px;display:flex;gap:0;transform:rotate(-45deg);transform-origin:bottom right}
+  .diamonds span{display:block;width:150px;height:60px}
+  .diamonds span:nth-child(1){background:var(--amber)}
+  .diamonds span:nth-child(2){background:var(--crimson)}
+  .diamonds span:nth-child(3){background:var(--magenta)}
+  .badge{display:inline-block;background:var(--white);color:var(--navy-900);font-weight:800;letter-spacing:.06em;font-size:.85rem;padding:4px 12px;margin-bottom:22px}
+  .hero-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .hero-top img{width:72px;height:72px}
+  .kicker{font-style:italic;font-weight:400;opacity:.9;max-width:46ch;margin:0 0 18px;font-size:1.02rem}
+  h1{margin:0 0 30px;font-weight:800;line-height:1.12;font-size:clamp(1.9rem,4.6vw,3.2rem);max-width:20ch;text-wrap:balance}
+  h1 .accent{color:var(--gold)}
+  .facts{display:flex;flex-wrap:wrap;gap:10px 14px;margin:0;padding:0;list-style:none;position:relative;z-index:2}
+  .facts li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 16px;font-size:.92rem;font-weight:600;backdrop-filter:blur(4px)}
+  .facts b{color:var(--gold);font-weight:700;margin-right:6px}
+  .hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;position:relative;z-index:2}
+
+  /* ============ Botones ============ */
+  .btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    padding:12px 22px;border-radius:999px;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-primary{background:var(--gold);color:var(--navy-900);box-shadow:0 6px 18px rgba(255,200,87,.25)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,200,87,.35)}
+  .btn-ghost{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .btn[disabled]{opacity:.7;cursor:progress;transform:none}
+
+  /* ============ Galería ============ */
+  .section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:-64px 0 22px;position:relative;z-index:3}
+  .section-title h2{margin:0;font-size:1.6rem;font-weight:800;color:var(--white)}
+  .count{color:var(--gold);font-weight:700;font-size:.95rem}
+  .toolbar{background:var(--white);border-radius:var(--radius);box-shadow:0 10px 30px rgba(11,16,48,.12);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:22px;position:relative;z-index:3}
+  .toolbar p{margin:0;font-size:.92rem;color:#3b4270}
+  .progress{display:none;flex:1 1 220px;min-width:180px}
+  .progress.on{display:block}
+  .progress progress{width:100%;height:10px;accent-color:var(--magenta)}
+  .progress small{display:block;font-size:.8rem;color:#3b4270;margin-top:2px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin:0 0 70px;padding:0;list-style:none}
+  .card{position:relative;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:0 6px 20px rgba(11,16,48,.08);display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,16,48,.16)}
+  .thumb{position:relative;display:block;aspect-ratio:4/3;background:var(--navy-700);border:0;padding:0;cursor:zoom-in;width:100%}
+  .thumb img{width:100%;height:100%;object-fit:cover}
+    .card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px}
+  .card-foot span{font-size:.82rem;font-weight:600;color:#3b4270;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dl{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;font-size:.82rem;color:var(--white);background:var(--navy-700);padding:7px 12px;border-radius:999px;transition:background .15s}
+  .dl:hover{background:var(--magenta)}
+  .dl svg{width:15px;height:15px}
+  .card .dl{position:absolute;right:10px;bottom:10px;width:36px;height:36px;padding:0;justify-content:center;background:rgba(11,16,48,.72);backdrop-filter:blur(4px)}
+  .card .dl:hover{background:var(--magenta)}
+  .card .dl svg{width:17px;height:17px}
+  .empty{padding:40px;text-align:center;background:var(--white);border-radius:var(--radius)}
+
+  /* ============ Lightbox ============ */
+  dialog.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+  dialog.lb::backdrop{background:rgba(6,9,28,.92)}
+  .lb-inner{position:relative;width:100%;height:100%;display:grid;grid-template-rows:1fr auto;padding:16px}
+  .lb-stage{display:flex;align-items:center;justify-content:center;min-height:0}
+  .lb-stage img{max-height:100%;max-width:100%;object-fit:contain;border-radius:8px}
+  .lb-bar{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;color:var(--white);padding-top:12px;font-size:.9rem;font-weight:600}
+  .lb-btn{appearance:none;border:0;cursor:pointer;background:rgba(255,255,255,.12);color:var(--white);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.4rem}
+  .lb-btn:hover{background:rgba(255,255,255,.25)}
+  .lb-close{position:absolute;top:14px;right:14px;z-index:2}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2}
+  .lb-prev{left:14px}.lb-next{right:14px}
+
+  /* ============ Sobre el encuentro ============ */
+  .about{background:var(--navy-900);color:var(--white);padding:64px 0;position:relative}
+  .about h2{font-size:1.7rem;margin:0 0 6px;font-weight:800}
+  .about .lead{margin:0 0 34px;opacity:.85;max-width:70ch}
+  .cols{display:grid;grid-template-columns:minmax(0,760px);gap:26px}
+  .panel{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:24px}
+  .panel h3{margin:0 0 14px;font-size:1.05rem;font-weight:800}
+  .panel:nth-child(1) h3{color:var(--gold)}
+  .panel:nth-child(2) h3{color:var(--coral)}
+  .panel:nth-child(3) h3{color:#d985f0}
+  .panel ul{margin:0;padding-left:0;list-style:none;display:grid;gap:12px;font-size:.93rem}
+  .panel li{padding-left:26px;position:relative}
+  .panel li::before{content:"➜";position:absolute;left:0;color:var(--gold);font-weight:800}
+  .panel:nth-child(2) li::before{color:var(--coral)}
+  .panel:nth-child(3) li::before{color:#d985f0}
+  .panel li b{font-weight:700}
+
+  details.prog{margin-top:30px;background:var(--white);color:var(--ink);border-radius:var(--radius);overflow:hidden}
+  details.prog+details.prog{margin-top:14px}
+  details.prog summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:16px;padding:18px 22px;font-weight:800;font-size:1.05rem;background:linear-gradient(90deg,var(--navy-900),var(--navy-700));color:var(--white)}
+  details.prog summary::-webkit-details-marker{display:none}
+  details.prog summary .day{font-size:1.5rem;font-weight:800}
+  details.prog:nth-of-type(1) .day{color:var(--gold)}
+  details.prog:nth-of-type(2) .day{color:#ff6d86}
+  details.prog summary small{display:block;font-weight:500;opacity:.85;font-size:.82rem}
+  details.prog summary::after{content:"+";margin-left:auto;font-size:1.6rem;font-weight:600}
+  details.prog[open] summary::after{content:"–"}
+  .agenda{margin:0;padding:6px 22px 18px;list-style:none}
+  .agenda li{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid #e4e6f3;font-size:.93rem}
+  .agenda li:last-child{border-bottom:0}
+  .agenda time{font-weight:800;color:var(--navy-700);white-space:nowrap}
+  .agenda strong{display:block;font-weight:700;text-transform:uppercase;font-size:.84rem;letter-spacing:.01em}
+  .agenda span{color:#3b4270;font-size:.86rem}
+  @media(max-width:560px){.agenda li{grid-template-columns:1fr;gap:2px}}
+
+  /* ============ Pie con logos ============ */
+  footer{background:var(--white)}
+  .logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:26px 46px;padding:34px 0 24px}
+  .logos img{height:64px;width:auto;object-fit:contain}
+  .logos img.tall{height:70px}
+  .legal{border-top:1px solid #e4e6f3;text-align:center;font-size:.8rem;color:#3b4270;padding:16px 0 26px}
+  .legal p{margin:2px 0}
+  .stripe{height:6px;background:linear-gradient(90deg,var(--amber) 0 33%,var(--crimson) 33% 66%,var(--magenta) 66%)}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="diamonds" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="wrap">
+    <div class="hero-top">
+      <img src="assets/icono.png" alt="" width="72" height="72">
+      <span class="badge">ÁLBUM DE FOTOS</span>
+    </div>
+    <p class="kicker">Investigación, persecución penal, análisis económico-financiero y recuperación de activos</p>
+    <h1>Encuentro Nacional de <span class="accent">Agencias Públicas</span> para la Investigación y Persecución de la Criminalidad Económica</h1>
+    <div class="hero-cta">
+      <button class="btn btn-primary" id="dlAllTop" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        Descargar todas (ZIP)
+      </button>
+      <a class="btn btn-ghost" href="#galeria">Ver fotos</a>
+    </div>
+  </div>
+</header>
+
+<main id="galeria" class="wrap">
+  <div class="section-title">
+    <h2>Galería</h2>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="toolbar">
+    <p>Tocá una foto para verla en grande. Cada una tiene su botón de descarga.</p>
+    <div class="progress" id="progress" role="status" aria-live="polite">
+      <progress id="bar" value="0" max="100"></progress>
+      <small id="progressText"></small>
+    </div>
+    <button class="btn btn-primary" id="dlAll" type="button" style="background:var(--navy-700);color:var(--white);box-shadow:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+      Descargar todas (ZIP)
+    </button>
+  </div>
+
+  <ul class="grid" id="grid"></ul>
+</main>
+
+<!-- Visor de fotos -->
+<dialog class="lb" id="lb" aria-label="Visor de fotos">
+  <div class="lb-inner">
+    <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">✕</button>
+    <button class="lb-btn lb-nav lb-prev" id="lbPrev" type="button" aria-label="Foto anterior">‹</button>
+    <button class="lb-btn lb-nav lb-next" id="lbNext" type="button" aria-label="Foto siguiente">›</button>
+    <div class="lb-stage"><img id="lbImg" alt=""></div>
+    <div class="lb-bar">
+      <span id="lbCaption"></span>
+      <a class="dl" id="lbDl" href="#" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        Descargar
+      </a>
+    </div>
+  </div>
+</dialog>
+
+<section class="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <h2 id="about-title">Sobre el encuentro</h2>
+    <p class="lead">Un espacio de trabajo federal que reunió a fiscalías, organismos de control y equipos técnicos para fortalecer la investigación y persecución de la criminalidad económica.</p>
+
+    <div class="cols">
+      <div class="panel">
+        <h3>Instituciones organizadoras</h3>
+        <ul>
+          <li><b>EcoCrim</b> – Programa de Estudios Interdisciplinarios sobre Prevención y Persecución de la Criminalidad Económica. Centro de Estudios Interdisciplinarios, Universidad Nacional de Rosario.</li>
+          <li><b>INECIP</b> – Instituto de Estudios Comparados en Ciencias Penales y Sociales.</li>
+          <li><b>CIPCE</b> – Centro de Investigación y Prevención de la Criminalidad Económica.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="stripe"></div>
+  <div class="wrap">
+    <div class="logos">
+      <img src="assets/ecocrim.png" alt="EcoCrim – Programa de Estudios Interdisciplinarios sobre Prevención y Persecución de la Criminalidad Económica">
+      <img class="tall" src="assets/cei.png" alt="CEI – Centro de Estudios Interdisciplinarios">
+      <img src="assets/unr.png" alt="UNR – Universidad Nacional de Rosario">
+      <img class="tall" src="assets/cipce.png" alt="CIPCE – Centro de Investigación y Prevención de la Criminalidad Económica">
+      <img class="tall" src="assets/inecip.png" alt="INECIP – Instituto de Estudios Comparados en Ciencias Penales y Sociales">
+    </div>
+    <div class="legal">
+      <p>Fotografías: © <span id="autor">Autor/a de las fotografías</span>. Se permite su descarga y difusión con mención de la autoría.</p>
+      <p>Los logos pertenecen a sus respectivas instituciones.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ============ Configuración ============
+     Para agregar fotos: subilas al repositorio y sumá su nombre a esta lista.
+     Ojo: GitHub Pages distingue mayúsculas y minúsculas (.JPG ≠ .jpg). */
+  var PHOTOS = [
+    'IMG_8639.JPG','IMG_8643.JPG','IMG_8646.JPG','IMG_8648.JPG','IMG_8649.JPG',
+    'IMG_8650.JPG','IMG_8652.JPG','IMG_8653.JPG','IMG_8654.JPG','IMG_8655.JPG'
+  ];
+  var ZIP_NAME = 'fotos_encuentro_criminalidad_2026.zip';
+  var AUTOR = 'Autor/a de las fotografías';   // ← poné tu nombre acá
+
+  var DL_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>';
+  var grid = document.getElementById('grid');
+  var current = 0;
+
+  document.getElementById('autor').textContent = AUTOR;
+  document.getElementById('count').textContent = PHOTOS.length + ' fotos';
+
+  function src(name){ return encodeURI(name); }
+
+  /* ---- Grilla ---- */
+  if(!PHOTOS.length){
+    grid.outerHTML = '<div class="empty">Todavía no hay fotos cargadas.</div>';
+  }
+  PHOTOS.forEach(function(name, i){
+    var li = document.createElement('li');
+    li.className = 'card';
+    li.innerHTML =
+      '<button class="thumb" type="button" aria-label="Ver foto ' + (i+1) + ' de ' + PHOTOS.length + ' en grande">' +
+        '<img src="' + src(name) + '" alt="Foto ' + (i+1) + ' del encuentro" loading="lazy" decoding="async">' +
+      '</button>' +
+      '<a class="dl" href="' + src(name) + '" download="' + name + '" aria-label="Descargar foto ' + (i+1) + '" title="Descargar">' + DL_ICON + '</a>';
+    li.querySelector('.thumb').addEventListener('click', function(){ openLb(i); });
+    grid.appendChild(li);
+  });
+
+  /* ---- Visor ---- */
+  var lb = document.getElementById('lb'),
+      lbImg = document.getElementById('lbImg'),
+      lbCap = document.getElementById('lbCaption'),
+      lbDl = document.getElementById('lbDl');
+
+  function show(i){
+    current = (i + PHOTOS.length) % PHOTOS.length;
+    var n = PHOTOS[current];
+    lbImg.src = src(n);
+    lbImg.alt = 'Foto ' + (current+1) + ' del encuentro';
+    lbCap.textContent = (current+1) + ' / ' + PHOTOS.length;
+    lbDl.href = src(n);
+    lbDl.setAttribute('download', n);
+  }
+  function openLb(i){ show(i); if(lb.showModal){ lb.showModal(); } else { lb.setAttribute('open',''); } }
+  function closeLb(){ if(lb.close){ lb.close(); } else { lb.removeAttribute('open'); } }
+
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(current-1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(current+1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb || e.target.classList.contains('lb-stage')) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.open) return;
+    if(e.key === 'ArrowLeft') show(current-1);
+    if(e.key === 'ArrowRight') show(current+1);
+  });
+
+  /* ---- Descarga de todas en ZIP ---- */
+  var btns = [document.getElementById('dlAll'), document.getElementById('dlAllTop')];
+  var progress = document.getElementById('progress'),
+      bar = document.getElementById('bar'),
+      ptext = document.getElementById('progressText');
+
+  function setBusy(b){
+    btns.forEach(function(x){ x.disabled = b; });
+  }
+  function status(msg, pct){
+    progress.classList.add('on');
+    ptext.textContent = msg;
+    if(typeof pct === 'number') bar.value = pct;
+  }
+
+  async function downloadAll(){
+    if(typeof JSZip === 'undefined'){
+      alert('No se pudo cargar el generador de ZIP. Revisá tu conexión y probá de nuevo, o descargá las fotos una por una.');
+      return;
+    }
+    setBusy(true);
+    try{
+      var zip = new JSZip();
+      for(var i=0;i<PHOTOS.length;i++){
+        status('Preparando foto ' + (i+1) + ' de ' + PHOTOS.length + '…', (i/PHOTOS.length)*80);
+        var res = await fetch(src(PHOTOS[i]));
+        if(!res.ok) throw new Error('No se pudo leer ' + PHOTOS[i]);
+        zip.file(PHOTOS[i], await res.blob());
+      }
+      status('Comprimiendo…', 85);
+      var blob = await zip.generateAsync({type:'blob', compression:'STORE'}, function(m){
+        bar.value = 85 + m.percent*0.15;
+      });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = ZIP_NAME;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+      status('¡Listo! Se descargó ' + ZIP_NAME, 100);
+    }catch(err){
+      console.error(err);
+      status('Hubo un problema al armar el ZIP. Probá de nuevo o descargá las fotos individualmente.', 0);
+    }finally{
+      setBusy(false);
+    }
+  }
+  btns.forEach(function(b){ b.addEventListener('click', downloadAll); });
+  document.getElementById('dlAllTop').addEventListener('click', function(){
+    document.getElementById('galeria').scrollIntoView({behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
